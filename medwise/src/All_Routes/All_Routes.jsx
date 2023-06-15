@@ -7,6 +7,7 @@ import Registration from "../Pages/Registration";
 import FindDoctor from "../Pages/FindDoctor"
 import AboutUs from "../Pages/AboutUs"
 import Services from "../Pages/Services"
+import ContactUs from "../Pages/ContactUs";
 
 function All_Routes() {
   return (
@@ -18,6 +19,7 @@ function All_Routes() {
         <Route path="/find_doctor" element={<FindDoctor />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/services" element={<Services/>} />
+        <Route path="/contact" element={<ContactUs/>} />
       </Routes>
     </Box>
   );
