@@ -67,7 +67,7 @@ function Home() {
         <Center>
           <Box
             // border={"2px solid black"}
-            w={{ sm: "200px", md: "300px", lg: "300px", xl: "300px" }}
+            w={{ sm: "200px", md: "320px", lg: "320px", xl: "320px" }}
             borderRadius={"150px"}
             style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
             boxSizing="borderBox"
@@ -184,7 +184,7 @@ function Home() {
         <Center>
           <Box
             borderTopRadius={"150px"}
-            w={{ sm: "200px", md: "320px", lg: "320px", xl: "320px" }}
+            w={{ sm: "200px", md: "350px", lg: "350px", xl: "350px" }}
             style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
             boxSizing="borderBox"
           >
@@ -294,61 +294,196 @@ function Home() {
         </Center>
       </Box>
 
-      <Center>
+      <Center m={"30px"}>
         <Box>
           <Heading as="h2" size={"2xl"}>
             Our Dedicated Doctors
           </Heading>
-          <Grid    templateColumns={{
-            base: "repeat(1, 1fr)",
-            sm: "repeat(2, 1fr)",
-            md: "repeat(4, 1fr)",
-            lg: "repeat(4, 1fr)",
-            xl: "repeat(4, 1fr)",
-          }}
-          gap={6}
-          width={"80%"}>
+          <Grid
+            templateColumns={{
+              base: "repeat(1, 1fr)",
+              sm: "repeat(2, 1fr)",
+              md: "repeat(4, 1fr)",
+              lg: "repeat(4, 1fr)",
+              xl: "repeat(4, 1fr)",
+            }}
+            gap={6}
+            width={"80%"}
+            m={"30px"}
+          >
             <GridItem>
-              <Card>
-                <CardBody>
+              <Card
+                className="shadow-drop-2-center"
+                style={{
+                  boxShadow:
+                    "rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px",
+                }}
+                borderTopRadius={"30px"}
+              >
+                <CardBody width={"230px"}>
                   <Image
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3MZxwFKT1IqMYmExLIxHJTy5mGkYNaSkdzw&usqp=CAU"
+                    src="https://i.pinimg.com/564x/16/96/71/169671343ef815d20808e6c9e43c5c19.jpg"
                     alt="img-1"
+                    width={"100%"}
+                    borderTopRadius={"30px"}
                   />
+                  Dr. Oliv Thompson
+                  <Heading as="h4" size={"md"}>
+                    Gynecologist
+                  </Heading>
                 </CardBody>
               </Card>
             </GridItem>
             <GridItem>
-            <Card>
-                <CardBody>
+              <Card
+                style={{
+                  boxShadow:
+                    "rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px",
+                }}
+                borderTopRadius={"30px"}
+              >
+                <CardBody width={"220px"}>
                   <Image
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3MZxwFKT1IqMYmExLIxHJTy5mGkYNaSkdzw&usqp=CAU"
-                    alt="img-1"
+                    src="https://i.pinimg.com/564x/e6/5c/a1/e65ca1dc632163e839f8f1af8cbc3b77.jpg"
+                    alt="img-2"
+                    borderTopRadius={"30px"}
                   />
+                  Dr. Jessica Lee
+                  <Heading as="h4" size={"md"}>
+                    Dermatologist
+                  </Heading>
                 </CardBody>
               </Card>
             </GridItem>
             <GridItem>
-            <Card>
-                <CardBody>
+              <Card
+                style={{
+                  boxShadow:
+                    "rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px",
+                }}
+                borderTopRadius={"30px"}
+              >
+                <CardBody width={"230px"}>
                   <Image
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3MZxwFKT1IqMYmExLIxHJTy5mGkYNaSkdzw&usqp=CAU"
-                    alt="img-1"
+                    src="https://i.pinimg.com/564x/3b/a1/a5/3ba1a52596efe2de3afe07680ba48755.jpg"
+                    alt="img-3"
+                    borderTopRadius={"30px"}
                   />
+                  Dr. David Wilson
+                  <Heading as="h4" size={"md"}>
+                    Neurologist
+                  </Heading>
                 </CardBody>
               </Card>
             </GridItem>
             <GridItem>
-            <Card>
-                <CardBody>
+              <Card
+                style={{
+                  boxShadow:
+                    "rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px",
+                }}
+                borderTopRadius={"30px"}
+              >
+                <CardBody width={"240px"}>
                   <Image
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3MZxwFKT1IqMYmExLIxHJTy5mGkYNaSkdzw&usqp=CAU"
-                    alt="img-1"
+                    src="https://i.pinimg.com/564x/80/2f/9a/802f9a21a08aed98c26ddc0e040d1208.jpg"
+                    alt="img-4"
+                    width={"100%"}
+                    borderTopRadius={"30px"}
                   />
+                  Dr. Michael Anderson
+                  <Heading as="h4" size={"md"}>
+                    Cardiologist
+                  </Heading>
                 </CardBody>
               </Card>
             </GridItem>
-           
+          </Grid>
+        </Box>
+      </Center>
+
+      <Center>
+        <Box p={"50px"} mt={"60px"} backgroundColor={"dodgerblue"}>
+          <Heading as="h2" size={"2xl"} color={"white"}>
+            See Our Latest Blog
+          </Heading>
+          <Grid
+            templateColumns={{
+              base: "repeat(1, 1fr)",
+              sm: "repeat(2, 1fr)",
+              md: "repeat(4, 1fr)",
+              lg: "repeat(4, 1fr)",
+              xl: "repeat(4, 1fr)",
+            }}
+            gap={6}
+            width={"80%"}
+            m={"auto"}
+            mt={"80px"}
+            
+          >
+            <GridItem
+              borderTopRadius={"30px"}
+              style={{
+                boxShadow:
+                  "rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px",
+              }}
+              backgroundColor={"orange"}
+            >
+              <Image
+                src="https://i.pinimg.com/564x/64/ba/e0/64bae08a6510f31bb4d8424bab4333f6.jpg"
+                alt="blog-1"
+                borderTopRadius={"30px"}
+              />
+              <a href="">Read More</a>
+            </GridItem>
+
+            <GridItem
+              borderTopRadius={"30px"}
+              style={{
+                boxShadow:
+                  "rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px",
+              }}
+              backgroundColor={"orange"}
+            >
+              <Image
+                src="https://i.pinimg.com/564x/29/c6/f3/29c6f3663a43cb589657523ab195f98d.jpg"
+                alt="blog-2"
+                borderTopRadius={"30px"}
+              />
+              <a href="">Read More</a>
+            </GridItem>
+
+            <GridItem
+              borderTopRadius={"30px"}
+              style={{
+                boxShadow:
+                  "rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px",
+              }}
+              backgroundColor={"orange"}
+            >
+              <Image
+                src="https://i.pinimg.com/564x/9f/49/94/9f499422565255b0af3e11e00f1911cb.jpg"
+                alt="blog-3"
+                borderTopRadius={"30px"}
+              />
+              <a href="">Read More</a>
+            </GridItem>
+
+            <GridItem
+              borderTopRadius={"30px"}
+              style={{
+                boxShadow:
+                  "rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px",
+              }}
+              backgroundColor={"orange"}
+            >
+              <Image
+                src="https://i.pinimg.com/564x/ca/4a/11/ca4a114fb038d1637f050e7ffdc3146b.jpg"
+                alt="blog-4"
+                borderTopRadius={"30px"}
+              />
+              <a href="">Read More</a>
+            </GridItem>
           </Grid>
         </Box>
       </Center>
