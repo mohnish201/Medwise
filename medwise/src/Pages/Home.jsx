@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import ButtonComponent from "../components/ButtonComponent";
 import doctor_2edited from "../Images/doctor_2edited.png";
 import service from "../Images/service.png";
@@ -9,6 +9,7 @@ import "../Pages/Home.css";
 import doctor_3 from "../Images/doctor_3.png";
 import doctor_4 from "../Images/doctor_4.png";
 import { RiCheckboxCircleFill } from "react-icons/ri";
+import { AuthContext } from "../AuthContextProvider/AuthContextProvider";
 import {
   Grid,
   GridItem,
@@ -24,8 +25,11 @@ import {
   Card,
   CardBody,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 function Home() {
+
+
   return (
     <Box>
       <Box
@@ -46,6 +50,7 @@ function Home() {
           p={"25px"}
           textAlign={"left"}
           alignItems={"left"}
+          spacing={"60px"}
         >
           <Heading
             as="h2"
@@ -57,8 +62,10 @@ function Home() {
             We value your time so we set up all your accounts billing and costs
             through one payment that we take out of the box
           </Text>
-
+          
+          <Link to="/appointment">
           <ButtonComponent text="Make Appointment" />
+          </Link>
         </VStack>
 
         <Center>

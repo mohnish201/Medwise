@@ -8,6 +8,7 @@ import FindDoctor from "../Pages/FindDoctor"
 import AboutUs from "../Pages/AboutUs"
 import Services from "../Pages/Services"
 import ContactUs from "../Pages/ContactUs";
+import Appointment from "../Pages/Appointment";
 
 function All_Routes() {
   return (
@@ -20,6 +21,7 @@ function All_Routes() {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/services" element={<Services/>} />
         <Route path="/contact" element={<ContactUs/>} />
+        <Route path="/appointment" element={<Appointment/>} />
       </Routes>
     </Box>
   );
