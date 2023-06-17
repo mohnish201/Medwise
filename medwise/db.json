@@ -1,0 +1,166 @@
+{
+  "doctors": [
+    {
+      "name": "Dr. John Doe",
+      "designation": "Senior Consultant",
+      "department": "Cardiology",
+      "image": "https://i.pinimg.com/564x/16/96/71/169671343ef815d20808e6c9e43c5c19.jpg"
+    },
+    {
+      "name": "Dr. Jane Smith",
+      "designation": "Pediatrician",
+      "department": "Pediatrics",
+      "image": "https://i.pinimg.com/564x/ef/d0/94/efd09480361a7ede8ef71bd97eedb2c5.jpg"
+    },
+    {
+      "name": "Dr. Michael Johnson",
+      "designation": "Orthopedic Surgeon",
+      "department": "Orthopedics",
+      "image": "https://i.pinimg.com/564x/7e/91/b7/7e91b721691322422919eec7dc039618.jpg"
+    },
+    {
+      "name": "Dr. Sarah Anderson",
+      "designation": "Dermatologist",
+      "department": "Dermatology",
+      "image": "https://i.pinimg.com/564x/8a/f9/a8/8af9a8b99ee28a9d21d734af4c08af15.jpg"
+    },
+    {
+      "name": "Dr. Robert Wilson",
+      "designation": "Neurologist",
+      "department": "Neurology",
+      "image": "https://i.pinimg.com/564x/9b/8a/c9/9b8ac9f179ea1bb27665029d9317512b.jpg"
+    },
+    {
+      "name": "Dr. Emily Davis",
+      "designation": "Gynecologist",
+      "department": "Gynecology",
+      "image": "https://i.pinimg.com/564x/e6/5c/a1/e65ca1dc632163e839f8f1af8cbc3b77.jpg"
+    },
+    {
+      "name": "Dr. Matthew Thompson",
+      "designation": "ENT Specialist",
+      "department": "ENT",
+      "image": "https://i.pinimg.com/564x/9d/5f/d8/9d5fd8adca4441abc44121d575a5fbb6.jpg"
+    },
+    {
+      "name": "Dr. Olivia Taylor",
+      "designation": "Ophthalmologist",
+      "department": "Ophthalmology",
+      "image": "https://i.pinimg.com/564x/e8/f1/a2/e8f1a249ea4366c6e4c611f37b550f57.jpg"
+    },
+    {
+      "name": "Dr. James Harris",
+      "designation": "General Surgeon",
+      "department": "Surgery",
+      "image": "https://i.pinimg.com/564x/00/45/05/004505817530803cf99a47a752a38bf5.jpg"
+    },
+    {
+      "name": "Dr. Ava Martin",
+      "designation": "Psychiatrist",
+      "department": "Psychiatry",
+      "image": "https://i.pinimg.com/564x/e7/7a/52/e77a52f8d5d83a57b53b727606bfd04f.jpg"
+    },
+    {
+      "name": "Dr. Samuel Clark",
+      "designation": "Urologist",
+      "department": "Urology",
+      "image": "https://i.pinimg.com/564x/60/70/06/6070061e1aa1c8eb779618d05f8d385a.jpg"
+    },
+    {
+      "name": "Dr. Lily Moore",
+      "designation": "Endocrinologist",
+      "department": "Endocrinology",
+      "image": "https://i.pinimg.com/564x/e5/3e/87/e53e8760a712ca7f9753944e270cc2df.jpg"
+    },
+    {
+      "name": "Dr. Benjamin White",
+      "designation": "Pulmonologist",
+      "department": "Pulmonology",
+      "image": "https://i.pinimg.com/564x/a0/58/6a/a0586aebe70a8750f374cbd2c82437ec.jpg"
+    },
+    {
+      "name": "Dr. Chloe Turner",
+      "designation": "Dentist",
+      "department": "Dentistry",
+      "image": "https://i.pinimg.com/564x/08/f7/d2/08f7d2a0a7cd33812887f9b55bd42f56.jpg"
+    },
+    {
+      "name": "Dr. Ethan Parker",
+      "designation": "Rheumatologist",
+      "department": "Rheumatology",
+      "image": "https://i.pinimg.com/564x/59/c6/fe/59c6febf717b3b9dbb2b7ff8df5b9c77.jpg"
+    },
+    {
+      "name": "Dr. Grace Adams",
+      "designation": "Gastroenterologist",
+      "department": "Gastroenterology",
+      "image": "https://i.pinimg.com/564x/1b/0a/41/1b0a41cf2132a34bf05a9b4dee30c1a6.jpg"
+    },
+    {
+      "name": "Dr. Noah Wilson",
+      "designation": "Nephrologist",
+      "department": "Nephrology",
+      "image": "https://i.pinimg.com/564x/37/15/b3/3715b37831a13adb2968597c09eaf7bb.jpg"
+    },
+    {
+      "name": "Dr. Mia Campbell",
+      "designation": "Oncologist",
+      "department": "Oncology",
+      "image": "https://i.pinimg.com/564x/22/0f/ad/220fadb0806c0eb699fc536ff6713a3b.jpg"
+    },
+    {
+      "name": "Dr. Andrew Mitchell",
+      "designation": "Allergist",
+      "department": "Allergy",
+      "image": "https://i.pinimg.com/564x/0b/42/2c/0b422c9ba0bae80d4fb588681f7572c0.jpg"
+    },
+    {
+      "name": "Dr. Sophia Hernandez",
+      "designation": "Physical Therapist",
+      "department": "Physical Therapy",
+      "image": "https://i.pinimg.com/564x/7c/23/13/7c2313f8d49ff41e48982af55d5938f9.jpg"
+    }
+  ],
+  "Users": [
+    {
+      "name": "John Doe",
+      "age": 35,
+      "gender": "Male",
+      "date_of_birth": "1988-05-10",
+      "email": "johndoe@example.com"
+    },
+    {
+      "name": "Jane Smith",
+      "age": 28,
+      "gender": "Female",
+      "date_of_birth": "1993-09-22",
+      "email": "janesmith@example.com"
+    }
+  ],
+  "appointments": [
+    {
+      "id": 1,
+      "doctorId": 3,
+      "patientName": "John Doe",
+      "date": "2023-06-20",
+      "time": "09:30 AM",
+      "status": "Booked"
+    },
+    {
+      "id": 2,
+      "doctorId": 2,
+      "patientName": "Jane Smith",
+      "date": "2023-06-21",
+      "time": "11:00 AM",
+      "status": "Booked"
+    },
+    {
+      "id": 3,
+      "doctorId": 1,
+      "patientName": "Alice Johnson",
+      "date": "2023-06-22",
+      "time": "02:15 PM",
+      "status": "Cancelled"
+    }
+  ]
+}
