@@ -83,7 +83,7 @@ function Registration() {
     //     isClosable: true,
     //   });
     // }
-    //  if(email !== "" || password === "") {
+    if(email !== "" || password === "") {
     toast({
       title: "Account Created",
       status: "success",
