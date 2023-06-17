@@ -31,7 +31,6 @@ function Home() {
       <Box
         w="80%"
         display={{ base: null, sm: null, md: "flex", lg: "flex", xl: "flex" }}
-        border={"2px solid black"}
         m={"auto"}
         mt={"20px"}
         justifyContent={{
@@ -43,8 +42,6 @@ function Home() {
         p={{ sm: null, md: "20px", lg: "20px", xl: "20px" }}
       >
         <VStack
-          spacing={"60px"}
-          border={"2px solid black"}
           w={{ md: "600px", lg: "600px", xl: "600px" }}
           p={"25px"}
           textAlign={"left"}
@@ -170,7 +167,6 @@ function Home() {
       <Box
         w="80%"
         display={{ base: null, sm: null, md: "flex", lg: "flex", xl: "flex" }}
-        border={"2px solid black"}
         m={"auto"}
         mt={"20px"}
         justifyContent={{
@@ -202,7 +198,6 @@ function Home() {
 
         <VStack
           spacing={"60px"}
-          border={"2px solid black"}
           w={{ md: "600px", lg: "600px", xl: "600px" }}
           p={"25px"}
           textAlign={"left"}
@@ -241,7 +236,6 @@ function Home() {
       <Box
         w="80%"
         display={{ base: null, sm: null, md: "flex", lg: "flex", xl: "flex" }}
-        border={"2px solid black"}
         m={"auto"}
         mt={"20px"}
         justifyContent={{
@@ -254,7 +248,6 @@ function Home() {
       >
         <VStack
           spacing={"60px"}
-          border={"2px solid black"}
           w={{ md: "600px", lg: "600px", xl: "600px" }}
           p={"25px"}
           textAlign={"left"}
@@ -302,7 +295,7 @@ function Home() {
           <Grid
             templateColumns={{
               base: "repeat(1, 1fr)",
-              sm: "repeat(2, 1fr)",
+              sm: "repeat(1, 1fr)",
               md: "repeat(4, 1fr)",
               lg: "repeat(4, 1fr)",
               xl: "repeat(4, 1fr)",
@@ -419,7 +412,6 @@ function Home() {
             width={"80%"}
             m={"auto"}
             mt={"80px"}
-            
           >
             <GridItem
               borderTopRadius={"30px"}
