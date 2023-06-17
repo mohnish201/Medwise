@@ -39,7 +39,7 @@ const reducer = (state, { type, payload }) => {
     case "name":
       return { ...state, name: payload };
 
-    case "email":
+    case "Email":
       return { ...state, Email: payload };
 
     case "age":
@@ -57,33 +57,32 @@ const reducer = (state, { type, payload }) => {
 };
 
 function Registration() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [show, setShow] = useState(false);
   const { auth, login, logout } = useContext(AuthContext);
   const [state, dispatch] = useReducer(reducer, initState);
   const [submittedData, setSubmittedData] = useState([]);
 
-  const handleClick = () => setShow(!show);
   const toast = useToast();
 
   const handleChange = (e) => {
     const { name, value, type } = e.target;
+
+    console.log(value);
     dispatch({ type: name, payload: value });
   };
+
+  const { name, Email, age, gender, date_of_birth } = state;
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // if (email === "" || password === "") {
-    //   toast({
-    //     title: "Fill All Details",
-    //     status: "warning",
-    //     duration: 9000,
-    //     isClosable: true,
-    //   });
-    // }
-    if(email !== "" || password === "") {
+    if (name ==="" || Email === "" || age===""|| gender===""|| date_of_birth==="") {
+      toast({
+        title: "Fill All Details",
+        status: "warning",
+        duration: 9000,
+        isClosable: true,
+      });
+    } else {
     toast({
       title: "Account Created",
       status: "success",
@@ -92,13 +91,9 @@ function Registration() {
     });
     setSubmittedData([...submittedData, state]);
     console.log(state);
+    }
   };
 
-  if (auth) {
-    return <Navigate to={"/"} />;
-  }
-
-  const { name, Email, age, gender, date_of_birth } = state;
   return (
     <Box>
       <Center>
@@ -133,7 +128,7 @@ function Registration() {
               <Input
                 type="email"
                 value={Email}
-                name="email"
+                name="Email"
                 placeholder="name@gmail.com"
                 onChange={handleChange}
                 mb={"10px"}
@@ -150,7 +145,12 @@ function Registration() {
               />
 
               <FormLabel>Your Gender</FormLabel>
-              <RadioGroup defaultValue="male" mb={"10px"} value={gender}>
+              <RadioGroup
+                mb={"10px"}
+                name="gender"
+                value={gender}
+                onChange={(value) => handleChange({ target: { name: 'gender', value } })}
+              >
                 <Stack spacing={5} direction="row">
                   <Radio colorScheme="red" value="male">
                     Male

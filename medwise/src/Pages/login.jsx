@@ -35,7 +35,7 @@ function Login() {
     e.preventDefault();
 
     if (email === "mohnish201@gmail.com" && password === "1234") {
-      login();
+      login("Mohnish Vishwakarma");
       toast({
         title: "Login Successful",
         status: "success",
@@ -52,11 +52,11 @@ function Login() {
     }
   };
 
-  if (auth) {
+  if (auth.isAuth) {
     return <Navigate to={"/"} />;
   }
 
-  const status = auth ? "success" : "error";
+
   return (
     <Box mt={"40px"}>
       <Center>
@@ -82,6 +82,7 @@ function Login() {
                 value={email}
                 placeholder="name@gmail.com"
                 onChange={(e) => setEmail(e.target.value)}
+                mb={"10px"}
               />
 
               <FormLabel>Your Password</FormLabel>
