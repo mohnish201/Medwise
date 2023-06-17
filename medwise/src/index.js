@@ -5,27 +5,28 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
-import { extendTheme } from '@chakra-ui/react'
-
+import { extendTheme } from "@chakra-ui/react";
+import AuthContextProvider from "./AuthContextProvider/AuthContextProvider";
 
 const breakpoints = {
-  sm: '320px',
-  md: '768px',
-  lg: '960px',
-  xl: '1200px',
-  '2xl': '1536px',
-}
+  sm: "320px",
+  md: "768px",
+  lg: "960px",
+  xl: "1200px",
+  "2xl": "1536px",
+};
 
-
-const theme = extendTheme({ breakpoints })
+const theme = extendTheme({ breakpoints });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <ChakraProvider theme={theme}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </ChakraProvider>
+  <AuthContextProvider>
+    <ChakraProvider theme={theme}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ChakraProvider>
+  </AuthContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
