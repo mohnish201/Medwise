@@ -4,11 +4,12 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../Pages/Home";
 import Login from "../Pages/login";
 import Registration from "../Pages/Registration";
-import FindDoctor from "../Pages/FindDoctor"
-import AboutUs from "../Pages/AboutUs"
-import Services from "../Pages/Services"
+import Our_Doctors from "../Pages/Our_Doctors";
+import AboutUs from "../Pages/AboutUs";
+import Services from "../Pages/Services";
 import ContactUs from "../Pages/ContactUs";
 import Appointment from "../Pages/Appointment";
+import PrivateRoute from "../components/PrivateRoute";
 
 function All_Routes() {
   return (
@@ -16,12 +17,26 @@ function All_Routes() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/registration" element={<Registration/>} />
-        <Route path="/find_doctor" element={<FindDoctor />} />
+        <Route path="/registration" element={<Registration />} />
+        <Route
+          path="/Our_Doctors"
+          element={
+            <PrivateRoute>
+              <Our_Doctors />
+            </PrivateRoute>
+          }
+        />
         <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/services" element={<Services/>} />
-        <Route path="/contact" element={<ContactUs/>} />
-        <Route path="/appointment" element={<Appointment/>} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route
+          path="/appointment"
+          element={
+            <PrivateRoute>
+              <Appointment />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </Box>
   );

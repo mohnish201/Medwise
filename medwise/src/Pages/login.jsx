@@ -21,6 +21,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { AuthContext } from "../AuthContextProvider/AuthContextProvider";
+import Footer from "../components/Footer";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -83,6 +84,7 @@ function Login() {
                 placeholder="name@gmail.com"
                 onChange={(e) => setEmail(e.target.value)}
                 mb={"10px"}
+                autoComplete
               />
 
               <FormLabel>Your Password</FormLabel>
@@ -112,13 +114,14 @@ function Login() {
             </FormControl>
           </form>
           <Text mt={"20px"}>
-            Already have an account?{" "}
+            Don't have an account?{" "}
             <Link to="/registration" style={{ color: "red" }}>
               Register Yourself
             </Link>
           </Text>
         </Box>
       </Center>
+      <Footer/>
     </Box>
   );
 }
