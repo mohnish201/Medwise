@@ -24,11 +24,15 @@ import {
   Checkbox,
   Card,
   CardBody,
+  useToast,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import Background from "../components/Background";
+import Footer from "../components/Footer";
 
 function Home() {
-
+  const { auth } = useContext(AuthContext);
+  const toast = useToast();
 
   return (
     <Box>
@@ -62,9 +66,9 @@ function Home() {
             We value your time so we set up all your accounts billing and costs
             through one payment that we take out of the box
           </Text>
-          
+
           <Link to="/appointment">
-          <ButtonComponent text="Make Appointment" />
+            <ButtonComponent text="Make Appointment" />
           </Link>
         </VStack>
 
@@ -303,11 +307,11 @@ function Home() {
             templateColumns={{
               base: "repeat(1, 1fr)",
               sm: "repeat(1, 1fr)",
-              md: "repeat(4, 1fr)",
+              md: "repeat(2, 1fr)",
               lg: "repeat(4, 1fr)",
               xl: "repeat(4, 1fr)",
             }}
-            gap={6}
+            gap={"30px"}
             width={"80%"}
             m={"30px"}
           >
@@ -486,6 +490,8 @@ function Home() {
           </Grid>
         </Box>
       </Center>
+
+      <Footer/>
     </Box>
   );
 }

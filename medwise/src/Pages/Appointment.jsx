@@ -1,132 +1,296 @@
-import React from "react";
-import { useContext, useState } from "react";
-import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import { Box } from "@chakra-ui/react";
+import {
+  Heading,
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  FormHelperText,
+  Textarea,
+  Select,
+  Center,
+  Button,
+  Flex,
+  VStack,
+  Badge,
+  Text,
+  Spacer,
+  HStack,
+  Toast,
+  useToast
+ 
 
+} from "@chakra-ui/react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useReducer, useRef } from "react";
+import Footer from "../components/Footer";
+
+const initState = {
+  patientName: "",
+  date: "",
+  time: "",
+  status: "",
+};
+
+const reducer = (state, { type, payload }) => {
+  switch (type) {
+    case "patientName":
+      return { ...state, patientName: payload };
+
+    case "date":
+      return { ...state, date: payload };
+
+    case "time":
+      return { ...state, time: payload };
+
+    case "status":
+      return { ...state, status: payload };
+
+    case "RESET":
+      return initState;
+
+    default:
+      return state;
+  }
+};
 function Appointment() {
-  const [selectedDate, setSelectedDate] = useState("");
-  const [selectedTime, setSelectedTime] = useState("");
-  const [selectedService, setSelectedService] = useState("");
-  const [customerName, setCustomerName] = useState("");
-  const [customerEmail, setCustomerEmail] = useState("");
-  const [bookedAppointments, setBookedAppointments] = useState([]);
+  const [state, dispatch] = useReducer(reducer, initState);
+  const [data, setData] = useState([]);
+  const toast = useToast();
 
-  const handleDateClick = (arg) => {
-    setSelectedDate(arg.dateStr);
+  const { patientName, date, time, status } = state;
+  const postData = () => {
+    axios
+      .post(`https://medwise-api-oy52.onrender.com/appointments`, {
+        patientName: patientName,
+        date: date,
+        time: time,
+        status: "Booked",
+      })
+      .then(() => getData())
+      .catch((err) => console.log(err));
   };
 
-  const handleTimeChange = (e) => {
-    setSelectedTime(e.target.value);
+  const getData = () => {
+    axios
+      .get(`https://medwise-api-oy52.onrender.com/appointments`)
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+      })
+      .catch((err) => console.log(err));
   };
 
-  const handleServiceChange = (e) => {
-    setSelectedService(e.target.value);
+  const deleteData = (id) => {
+    axios
+      .delete(`https://medwise-api-oy52.onrender.com/appointments/${id}`)
+      .then(() => getData())
+      .catch((err) => console.log(err));
+
+      toast({
+        title: "Appointment Deleted",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
   };
 
-  const handleNameChange = (e) => {
-    setCustomerName(e.target.value);
+  const toggleStatus = (id) => {
+    axios
+      .patch(`https://medwise-api-oy52.onrender.com/appointments/${id}`, {
+        status: "Cancelled",
+      })
+      .then(() => getData())
+      .catch((err) => console.log(err));
+
+      toast({
+        title: "Appointment Cancelled",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
   };
 
-  const handleEmailChange = (e) => {
-    setCustomerEmail(e.target.value);
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const handleChange = (e) => {
+    const { name, type, value } = e.target;
+
+    dispatch({ type: name, payload: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch({ type: "RESET" });
+    console.log(state);
+    postData();
+     
+    toast({
+      title: "Appointment Booked Successfull",
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+    });
 
-    const newAppointment = {
-      date: selectedDate,
-      time: selectedTime,
-      service: selectedService,
-      name: customerName,
-      email: customerEmail,
-    };
-
-    setBookedAppointments([...bookedAppointments, newAppointment]);
-
-    // Reset form fields
-    setSelectedDate("");
-    setSelectedTime("");
-    setSelectedService("");
-    setCustomerName("");
-    setCustomerEmail("");
-
-    // Show success message or perform any other actions
-    alert("Appointment booked successfully!");
   };
 
-  const eventSources = [
-    {
-      events: bookedAppointments.map((appointment) => ({
-        title: appointment.service,
-        start: appointment.date,
-      })),
-    },
-  ];
-
   return (
-    <div>
-      <h1>Appointment Booking System</h1>
-      <div>
-        <Box w={{base: "300px", sm: "400px", md: "500px", lg: "600px", xl: "700px"}}>
-          <FullCalendar
-            plugins={[dayGridPlugin]}
-            dateClick={handleDateClick}
-            events={eventSources}
-          />
+    <Box>
+      <Heading>Book Appointment & Consult with a Doctor</Heading>
+
+      <Flex
+        m="30px"
+        display={{ base: null, sm: null, md: "flex", lg: "flex", xl: "flex" }}
+        justifyContent={"space-evenly"}
+      >
+        <Box
+          p={"20px 20px 0 20px"}
+          style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" }}
+          border={"1px solid #DDE6ED"}
+          borderRadius={"20px"}
+        >
+          <form onSubmit={handleSubmit}>
+            <FormControl
+              w={{ base: "sm", sm: "sm", md: "md", lg: "md", xl: "md" }}
+              textAlign={"left"}
+            >
+              <FormLabel>Patient Name</FormLabel>
+              <Input
+                type="text"
+                name="patientName"
+                placeholder="Enter Patient Name"
+                mb={"10px"}
+                value={patientName}
+                onChange={handleChange}
+              />
+
+              <FormLabel>Tell us your symptom or health problem</FormLabel>
+              <Textarea placeholder="E.g: fever, headache" mb={"10px"} />
+
+              <FormLabel>Select Date</FormLabel>
+              <Input
+                type="date"
+                mb={"10px"}
+                value={date}
+                onChange={handleChange}
+                name="date"
+              />
+
+              <FormLabel>Select Time </FormLabel>
+              <Input
+                type="time"
+                value={time}
+                onChange={handleChange}
+                name="time"
+              />
+              <FormHelperText mb={"10px"}>
+                Select Time Between 11.30 AM to 09.00 PM
+              </FormHelperText>
+
+              <FormLabel>Patient Blood Group</FormLabel>
+              <Select placeholder="--Select Blood Group--" mb={"10px"}>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+              </Select>
+
+              <Center>
+                <Button mt={4} mb={0} colorScheme="messenger" type="submit">
+                  Book Appointment
+                </Button>
+              </Center>
+            </FormControl>
+          </form>
         </Box>
-      </div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Select Time:
-          <select value={selectedTime} onChange={handleTimeChange} required>
-            <option value="">Select a time</option>
-            <option value="09:00">9:00 AM</option>
-            <option value="10:00">10:00 AM</option>
-            <option value="11:00">11:00 AM</option>
-            {/* Add more time options as needed */}
-          </select>
-        </label>
-        <br />
-        <label>
-          Select Service:
-          <select
-            value={selectedService}
-            onChange={handleServiceChange}
-            required
+
+        <Box justifyContent={"center"}>
+          <Heading
+            as="h3"
+            size={"md"}
+            m="auto"
+            mb="10px"
+            color="red"
+            textAlign={"center"}
           >
-            <option value="">Select a service</option>
-            <option value="haircut">Haircut</option>
-            <option value="massage">Massage</option>
-            <option value="facial">Facial</option>
-            {/* Add more service options as needed */}
-          </select>
-        </label>
-        <br />
-        <label>
-          Customer Name:
-          <input
-            type="text"
-            value={customerName}
-            onChange={handleNameChange}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Customer Email:
-          <input
-            type="email"
-            value={customerEmail}
-            onChange={handleEmailChange}
-            required
-          />
-        </label>
-        <br />
-        <button type="submit">Book Appointment</button>
-      </form>
-    </div>
+            Booking History
+          </Heading>
+
+          {data.length === 0 ? (
+            <Heading as="h3" size={"sm"}>
+              You haven't booked any appointments yet.
+            </Heading>
+          ) : (
+            <Box overflow={"auto"}>
+            <VStack
+              textAlign={"left"}
+             
+              height={"600px"}
+              w={"500px"}
+              m="auto"
+              flexDirection={"column-reverse"}
+              justifyContent={"flex-end"}
+            >
+              {data.map((el) => (
+                <Box
+                  key={el.id}
+                  style={{
+                    boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
+                  }}
+                  border={"1px solid #DDE6ED"}
+                  p="20px"
+                  borderRadius={"20px"}
+                  w={"400px"}
+                  bgColor={"dodgerblue"}
+                  color="white"
+                >
+                  <Text>
+                    Appointment Status:{" "}
+                    <Badge
+                      colorScheme={el.status === "Booked" ? "green" : "red"}
+                    >
+                      {el.status}
+                    </Badge>
+                  </Text>
+
+                  <Text>
+                    Patient Name: <strong>{el.patientName}</strong>
+                  </Text>
+                  <Text>
+                    Date of Appointment: <strong>{el.date}</strong>
+                  </Text>
+                  <Text>
+                    Time: <strong>{el.time}</strong>
+                  </Text>
+
+                  <HStack
+                    mt={"10px"}
+                    justifyContent={"center"}
+                    onClick={() => toggleStatus(el.id)}
+                  >
+                    <Button>Cancel</Button>
+
+                    <Button colorScheme="red" onClick={() => deleteData(el.id)}>
+                      Delete
+                    </Button>
+
+                  </HStack>
+                </Box>
+              ))}
+            </VStack>
+            </Box>
+          )}
+        </Box>
+      </Flex>
+
+      <Footer/>
+    </Box>
   );
 }
 

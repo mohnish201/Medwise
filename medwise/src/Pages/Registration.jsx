@@ -25,6 +25,7 @@ import {
   RadioGroup,
 } from "@chakra-ui/react";
 import { AuthContext } from "../AuthContextProvider/AuthContextProvider";
+import Footer from "../components/Footer";
 
 const initState = {
   name: "",
@@ -185,6 +186,7 @@ function Registration() {
           </Text>
         </Box>
       </Center>
+      <Footer/>
     </Box>
   );
 }

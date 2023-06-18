@@ -36,7 +36,7 @@ const links = [
   { title: "Home", path: "/" },
   { title: "About Us", path: "/aboutus" },
   { title: "Services", path: "/services" },
-  { title: "Find a Doctor", path: "/find_Doctor" },
+  { title: "Our Doctors", path: "/Our_Doctors" },
 ];
 
 const nonActive = {
@@ -191,9 +191,9 @@ function Navbar() {
             </MenuItem>
           </Link>
 
-          <Link to="/find_doctor">
+          <Link to="/Our_Doctors">
             <MenuItem>
-              Find a Doctor <Spacer /> <GiDoctorFace />{" "}
+              Our Doctor <Spacer /> <GiDoctorFace />
             </MenuItem>
           </Link>
 
