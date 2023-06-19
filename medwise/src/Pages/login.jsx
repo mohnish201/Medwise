@@ -121,7 +121,7 @@ function Login() {
           </Text>
         </Box>
       </Center>
-      <Footer/>
+
     </Box>
   );
 }

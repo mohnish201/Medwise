@@ -92,6 +92,8 @@ function Registration() {
     });
     setSubmittedData([...submittedData, state]);
     console.log(state);
+
+  
     }
   };
 
