@@ -31,7 +31,7 @@ Welcome to <b>Medwise</b>, where we are committed to providing exceptional medic
 ![](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
 
-- Live preview : 
+- Live preview : https://medwise.netlify.app/
 
 
 # Features
