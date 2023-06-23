@@ -97,7 +97,7 @@ function Home() {
           templateColumns={{
             base: "repeat(1, 1fr)",
             sm: "repeat(1, 1fr)",
-            md: "repeat(3, 1fr)",
+            md: "repeat(1, 1fr)",
             lg: "repeat(3, 1fr)",
             xl: "repeat(3, 1fr)",
           }}
@@ -122,8 +122,8 @@ function Home() {
               </HStack>
             </Center>
             <Text textAlign={"left"}>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Exercitationem pariatur nam perspiciatis, illo at consequatur.
+              "Our healthcare professionals provide specialized services,
+              prioritizing individualized care to meet your unique needs."
             </Text>
           </GridItem>
 
@@ -145,8 +145,8 @@ function Home() {
               </HStack>
             </Center>
             <Text textAlign={"left"}>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Exercitationem pariatur nam perspiciatis, illo at consequatur.
+              "Our dedicated team ensures round-the-clock care, delivering
+              unparalleled support to meet your needs anytime, anywhere."
             </Text>
           </GridItem>
 
@@ -168,8 +168,8 @@ function Home() {
               </HStack>
             </Center>
             <Text textAlign={"left"}>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Exercitationem pariatur nam perspiciatis, illo at consequatur.
+              "Experience the convenience of accessing instant online results,
+              right at your fingertips, with our efficient system."
             </Text>
           </GridItem>
         </Grid>
@@ -491,7 +491,7 @@ function Home() {
         </Box>
       </Center>
 
-      <Footer/>
+      <Footer />
     </Box>
   );
 }

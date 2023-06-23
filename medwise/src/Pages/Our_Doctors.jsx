@@ -58,8 +58,8 @@ function FindDoctor() {
         <Grid
           templateColumns={{
             base: "repeat(1, 1fr)",
-            sm: "repeat(2, 1fr)",
-            md: "repeat(3, 1fr)",
+            sm: "repeat(1, 1fr)",
+            md: "repeat(2, 1fr)",
             lg: "repeat(4, 1fr)",
             xl: "repeat(4, 1fr)",
           }}
@@ -80,8 +80,8 @@ function FindDoctor() {
                 <Image
                   src={el.image}
                   alt={el.name}
-                  width="210px"
-                  h={"300px"}
+                  width={{base:"100px", sm: "210px", md: "210px", lg: "210px", lg: "210px"}}
+                  h={{base: "160px", sm: "300px", md: "280px", lg: "230px", xl: "300px"}}
                   borderRadius={"30px"}
                 />
 

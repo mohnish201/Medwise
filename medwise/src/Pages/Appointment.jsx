@@ -16,9 +16,7 @@ import {
   Spacer,
   HStack,
   Toast,
-  useToast
- 
-
+  useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -87,12 +85,12 @@ function Appointment() {
       .then(() => getData())
       .catch((err) => console.log(err));
 
-      toast({
-        title: "Appointment Deleted",
-        status: "error",
-        duration: 2000,
-        isClosable: true,
-      });
+    toast({
+      title: "Appointment Deleted",
+      status: "error",
+      duration: 2000,
+      isClosable: true,
+    });
   };
 
   const toggleStatus = (id) => {
@@ -103,12 +101,12 @@ function Appointment() {
       .then(() => getData())
       .catch((err) => console.log(err));
 
-      toast({
-        title: "Appointment Cancelled",
-        status: "error",
-        duration: 2000,
-        isClosable: true,
-      });
+    toast({
+      title: "Appointment Cancelled",
+      status: "error",
+      duration: 2000,
+      isClosable: true,
+    });
   };
 
   useEffect(() => {
@@ -126,14 +124,13 @@ function Appointment() {
     dispatch({ type: "RESET" });
     console.log(state);
     postData();
-     
+
     toast({
       title: "Appointment Booked Successfull",
       status: "success",
       duration: 5000,
       isClosable: true,
     });
-
   };
 
   return (
@@ -142,18 +139,24 @@ function Appointment() {
 
       <Flex
         m="30px"
-        display={{ base: null, sm: null, md: "flex", lg: "flex", xl: "flex" }}
+        display={{ base: null, sm: null , md: "flex", lg: "flex", xl: "flex" }}
         justifyContent={"space-evenly"}
+        gap={"20px"}
       >
         <Box
-          p={"20px 20px 0 20px"}
-          style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" }}
+          p={"20px 20px 20px 20px"}
+          boxSize={"borderBox"}
+          style={{
+            boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
+            boxSizing: "border-box",
+          }}
           border={"1px solid #DDE6ED"}
           borderRadius={"20px"}
+          w={{ base: "sm", sm: "sm", md: "md", lg: "lg", xl: "lg" }}
         >
           <form onSubmit={handleSubmit}>
             <FormControl
-              w={{ base: "sm", sm: "sm", md: "md", lg: "md", xl: "md" }}
+              size={{ base: "xs", sm: "xs", md: "md", lg: "lg", xl: "lg" }}
               textAlign={"left"}
             >
               <FormLabel>Patient Name</FormLabel>
@@ -164,6 +167,8 @@ function Appointment() {
                 mb={"10px"}
                 value={patientName}
                 onChange={handleChange}
+                required
+                // size={{ base: "sm", sm: "sm", md: "md", lg: "md", xl: "md" }}
               />
 
               <FormLabel>Tell us your symptom or health problem</FormLabel>
@@ -176,6 +181,8 @@ function Appointment() {
                 value={date}
                 onChange={handleChange}
                 name="date"
+                required
+                // size={{ base: "sm", sm: "sm", md: "md", lg: "md", xl: "md" }}
               />
 
               <FormLabel>Select Time </FormLabel>
@@ -184,13 +191,15 @@ function Appointment() {
                 value={time}
                 onChange={handleChange}
                 name="time"
+                required
+                // size={{ base: "sm", sm: "sm", md: "md", lg: "md", xl: "md" }}
               />
               <FormHelperText mb={"10px"}>
                 Select Time Between 11.30 AM to 09.00 PM
               </FormHelperText>
 
               <FormLabel>Patient Blood Group</FormLabel>
-              <Select placeholder="--Select Blood Group--" mb={"10px"}>
+              <Select placeholder="--Select Blood Group--" mb={"10px"} required >
                 <option value="A+">A+</option>
                 <option value="A-">A-</option>
                 <option value="B+">B+</option>
@@ -210,7 +219,7 @@ function Appointment() {
           </form>
         </Box>
 
-        <Box justifyContent={"center"}>
+        <Box justifyContent={"center"} >
           <Heading
             as="h3"
             size={"md"}
@@ -228,68 +237,69 @@ function Appointment() {
             </Heading>
           ) : (
             <Box overflow={"auto"}>
-            <VStack
-              textAlign={"left"}
-             
-              height={"600px"}
-              w={"500px"}
-              m="auto"
-              flexDirection={"column-reverse"}
-              justifyContent={"flex-end"}
-            >
-              {data.map((el) => (
-                <Box
-                  key={el.id}
-                  style={{
-                    boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
-                  }}
-                  border={"1px solid #DDE6ED"}
-                  p="20px"
-                  borderRadius={"20px"}
-                  w={"400px"}
-                  bgColor={"dodgerblue"}
-                  color="white"
-                >
-                  <Text>
-                    Appointment Status:{" "}
-                    <Badge
-                      colorScheme={el.status === "Booked" ? "green" : "red"}
-                    >
-                      {el.status}
-                    </Badge>
-                  </Text>
-
-                  <Text>
-                    Patient Name: <strong>{el.patientName}</strong>
-                  </Text>
-                  <Text>
-                    Date of Appointment: <strong>{el.date}</strong>
-                  </Text>
-                  <Text>
-                    Time: <strong>{el.time}</strong>
-                  </Text>
-
-                  <HStack
-                    mt={"10px"}
-                    justifyContent={"center"}
-                    onClick={() => toggleStatus(el.id)}
+              <VStack
+                textAlign={"left"}
+                height={"550px"}
+                w={{base: "300px", sm: "300px", md: "500px", lg: "500px", xl: "500px"}}
+                m="auto"
+                flexDirection={"column-reverse"}
+                justifyContent={"flex-end"}
+              >
+                {data.map((el) => (
+                  <Box
+                    key={el.id}
+                    style={{
+                      boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
+                    }}
+                    border={"1px solid #DDE6ED"}
+                    p="20px"
+                    borderRadius={"20px"}
+                    w={"400px"}
+                    bgColor={"dodgerblue"}
+                    color="white"
                   >
-                    <Button>Cancel</Button>
+                    <Text>
+                      Appointment Status:{" "}
+                      <Badge
+                        colorScheme={el.status === "Booked" ? "green" : "red"}
+                      >
+                        {el.status}
+                      </Badge>
+                    </Text>
 
-                    <Button colorScheme="red" onClick={() => deleteData(el.id)}>
-                      Delete
-                    </Button>
+                    <Text>
+                      Patient Name: <strong>{el.patientName}</strong>
+                    </Text>
+                    <Text>
+                      Date of Appointment: <strong>{el.date}</strong>
+                    </Text>
+                    <Text>
+                      Time: <strong>{el.time}</strong>
+                    </Text>
 
-                  </HStack>
-                </Box>
-              ))}
-            </VStack>
+                    <HStack mt={"10px"} justifyContent={"center"}>
+                      {el.status === "Booked" && (
+                        <Button onClick={() => toggleStatus(el.id)}>
+                          Cancel
+                        </Button>
+                      )}
+
+                      <Button
+                        colorScheme="red"
+                        onClick={() => deleteData(el.id)}
+                      >
+                        Delete
+                      </Button>
+                    </HStack>
+                  </Box>
+                ))}
+              </VStack>
             </Box>
           )}
         </Box>
       </Flex>
 
-      <Footer/>
+      <Footer />
     </Box>
   );
 }

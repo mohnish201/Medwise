@@ -58,7 +58,7 @@ function Services() {
             as="h2"
             size={{ base: "xl", sm: "2xl", md: "2xl", lg: "2xl", xl: "3xl" }}
           >
-           Our Services That We Provide
+            Our Services That We Provide
           </Heading>
         </VStack>
 
@@ -66,7 +66,8 @@ function Services() {
           <Box
             // border={"2px solid black"}
             w={{ sm: "200px", md: "320px", lg: "320px", xl: "320px" }}
-            boxSizing="borderBox" textAlign={"left"}
+            boxSizing="borderBox"
+            textAlign={"left"}
           >
             <Text>
               To facilitate medical services through health care facilities,
@@ -81,7 +82,7 @@ function Services() {
           templateColumns={{
             base: "repeat(1, 1fr)",
             sm: "repeat(1, 1fr)",
-            md: "repeat(3, 1fr)",
+            md: "repeat(1, 1fr)",
             lg: "repeat(3, 1fr)",
             xl: "repeat(3, 1fr)",
           }}
@@ -106,8 +107,8 @@ function Services() {
               </HStack>
             </Center>
             <Text textAlign={"left"}>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Exercitationem pariatur nam perspiciatis, illo at consequatur.
+              "Our healthcare professionals provide specialized services,
+              prioritizing individualized care to meet your unique needs."
             </Text>
           </GridItem>
 
@@ -129,8 +130,8 @@ function Services() {
               </HStack>
             </Center>
             <Text textAlign={"left"}>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Exercitationem pariatur nam perspiciatis, illo at consequatur.
+              "Our dedicated team ensures round-the-clock care, delivering
+              unparalleled support to meet your needs anytime, anywhere."
             </Text>
           </GridItem>
 
@@ -152,13 +153,13 @@ function Services() {
               </HStack>
             </Center>
             <Text textAlign={"left"}>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Exercitationem pariatur nam perspiciatis, illo at consequatur.
+              "Experience the convenience of accessing instant online results,
+              right at your fingertips, with our efficient system."
             </Text>
           </GridItem>
         </Grid>
       </Center>
-      <Footer/>
+      <Footer />
     </Box>
   );
 }
