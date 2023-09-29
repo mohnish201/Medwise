@@ -22,6 +22,7 @@ import {
 } from "@chakra-ui/react";
 import { AuthContext } from "../AuthContextProvider/AuthContextProvider";
 import Footer from "../components/Footer";
+import axios from "axios";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -35,28 +36,44 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (email === "mohnish201@gmail.com" && password === "1234") {
-      login("Mohnish Vishwakarma");
-      toast({
-        title: "Login Successful",
-        status: "success",
-        duration: 9000,
-        isClosable: true,
+    axios
+      .get("https://medwise.onrender.com/Users")
+      .then((res) => {
+        const data = res.data.find(
+          (el) => el?.Email == email && el?.password == password
+        );
+
+        if (data) {
+          login(data.name);
+          toast({
+            title: "Login Successful",
+            status: "success",
+            duration: 9000,
+            isClosable: true,
+          });
+        } else {
+          toast({
+            title: "Incorrect Details",
+            status: "error",
+            duration: 9000,
+            isClosable: true,
+          });
+        }
+      })
+
+      .catch((err) => {
+        toast({
+          title: "Something went wrong try again",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
       });
-    } else {
-      toast({
-        title: "Incorrect Details",
-        status: "error",
-        duration: 9000,
-        isClosable: true,
-      });
-    }
   };
 
   if (auth.isAuth) {
     return <Navigate to={"/"} />;
   }
-
 
   return (
     <Box mt={"40px"}>
@@ -102,12 +119,7 @@ function Login() {
               </InputGroup>
 
               <Center>
-                <Button
-                  mt={4}
-                  colorScheme="messenger"
-                  type="submit"
-                  w={"100%"}
-                >
+                <Button mt={4} colorScheme="messenger" type="submit" w={"100%"}>
                   Submit
                 </Button>
               </Center>
@@ -121,7 +133,6 @@ function Login() {
           </Text>
         </Box>
       </Center>
-
     </Box>
   );
 }

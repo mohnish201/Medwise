@@ -6,7 +6,8 @@ function AuthContextProvider({children}) {
 
   const [auth, setAuth] = useState({
     isAuth : false,
-    username : null
+    username : null,
+    loading: false
   });
   
   const login=(username)=>{

@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import axios from "axios";
 import {
   Box,
@@ -8,9 +8,12 @@ import {
   Grid,
   Text,
   Center,
+  Select,
+  Button,
 } from "@chakra-ui/react";
 import Loading from "../components/Loading";
 import Footer from "../components/Footer";
+import ButtonComponent from "../components/ButtonComponent";
 const initState = {
   loading: false,
   data: [],
@@ -33,27 +36,59 @@ const reducer = (state, { type, payload }) => {
 };
 function FindDoctor() {
   const [state, dispatch] = useReducer(reducer, initState);
+  const [designation, setDesignation] = useState("");
 
   const fetchData = () => {
     dispatch({ type: "FETCH_LOADING" });
+    const params = {};
+    if (designation) {
+      params.designation = designation;
+    }
     axios
-      .get(`https://medwise-api-oy52.onrender.com/doctors`)
+      .get("https://medwise.onrender.com/doctors", { params })
       .then((res) => dispatch({ type: "FETCH_SUCCESS", payload: res.data }))
-      .catch((err) => dispatch({ type: "FETCH_ERROR" }));
+      .catch(() => dispatch({ type: "FETCH_ERROR" }));
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [designation]);
 
   const { loading, error, data } = state;
-
+  console.log(designation);
   if (loading) {
     return <Loading />;
   }
   return (
     <Box>
-     <Heading  as="h1" size="xl"mb="30px" >Our Team of Dedicated Doctors</Heading>
+      <Heading as="h1" size="xl" mb="30px">
+        Our Team of Dedicated Doctors
+      </Heading>
+      <Center>
+        <Select
+          size={"md"}
+          w={"240px"}
+          mb="20px"
+          value={designation}
+          onChange={(e) => setDesignation(e.target.value)}
+        >
+          <option value="">--Select Speciality--</option>
+          <option value="Dermatologist">Dermatologist</option>
+          <option value="Orthopedic Surgeon">Orthopedic Surgeon</option>
+          <option value="Pediatrician">Pediatrician</option>
+          <option value="Neurologist">Neurologist</option>
+          <option value="Gynecologist">Gynecologist</option>
+          <option value="ENT Specialist">ENT Specialist</option>
+          <option value="Ophthalmologist">Ophthalmologist</option>
+          <option value="Endocrinologist">Endocrinologist</option>
+          <option value="General Surgeon">General Surgeon</option>
+          <option value="Psychiatrist">Psychiatrist</option>
+          <option value="Gastroenterologist">Gastroenterologist</option>
+          <option value="Rheumatologist">Rheumatologist</option>
+          <option value="Dentist">Dentist</option>
+          <option value="Pulmonologist">Pulmonologist</option>
+        </Select>
+      </Center>
       <Center>
         <Grid
           templateColumns={{
@@ -80,8 +115,20 @@ function FindDoctor() {
                 <Image
                   src={el.image}
                   alt={el.name}
-                  width={{base:"100px", sm: "210px", md: "210px", lg: "210px", lg: "210px"}}
-                  h={{base: "160px", sm: "300px", md: "280px", lg: "230px", xl: "300px"}}
+                  width={{
+                    base: "100px",
+                    sm: "210px",
+                    md: "210px",
+                    lg: "210px",
+                    lg: "210px",
+                  }}
+                  h={{
+                    base: "160px",
+                    sm: "300px",
+                    md: "280px",
+                    lg: "230px",
+                    xl: "300px",
+                  }}
                   borderRadius={"30px"}
                 />
 
@@ -97,7 +144,7 @@ function FindDoctor() {
         </Grid>
       </Center>
 
-      <Footer/>
+      <Footer />
     </Box>
   );
 }

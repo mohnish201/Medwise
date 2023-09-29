@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useState, useReducer } from "react";
+import axios from "axios";
 import {
   Button,
   Center,
@@ -10,7 +11,7 @@ import {
   InputRightElement,
 } from "@chakra-ui/react";
 import MedwiseLogo from "../Images/MedwiseLogo.png";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import {
   Box,
   FormControl,
@@ -49,8 +50,11 @@ const reducer = (state, { type, payload }) => {
     case "gender":
       return { ...state, gender: payload };
 
-    case "date_of_birth":
-      return { ...state, date_of_birth: payload };
+    case "password":
+      return { ...state, password: payload };
+
+      case "reset":
+        return initState
 
     default:
       return state;
@@ -71,30 +75,57 @@ function Registration() {
     dispatch({ type: name, payload: value });
   };
 
-  const { name, Email, age, gender, date_of_birth } = state;
+  let { name, Email, age, gender, password } = state;
+
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (name ==="" || Email === "" || age===""|| gender===""|| date_of_birth==="") {
-      toast({
-        title: "Fill All Details",
-        status: "warning",
-        duration: 9000,
-        isClosable: true,
-      });
-    } else {
-    toast({
-      title: "Account Created",
-      status: "success",
-      duration: 9000,
-      isClosable: true,
-    });
-    setSubmittedData([...submittedData, state]);
-    console.log(state);
+    axios
+      .post("https://medwise.onrender.com/Users", state)
+      .then((res) => {
+        // console.log(res.data)
+        if (
+          name === "" ||
+          Email === "" ||
+          age === "" ||
+          gender === "" ||
+          password === ""
+        ) {
+          toast({
+            title: "Fill All Details",
+            status: "warning",
+            duration: 9000,
+            isClosable: true,
+          });
 
-  
-    }
+        } else {
+          toast({
+            title: "Account Created",
+            status: "success",
+            duration: 9000,
+            isClosable: true,
+          });
+          navigate("/login")
+        }
+
+      })
+      .catch((err) => {
+        toast({
+          title: "Something went wrong try again",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+
+        console.log(err);
+      });
+    // console.log(state);
+
+    dispatch({type:"reset"})
+
+     
   };
 
   return (
@@ -137,40 +168,45 @@ function Registration() {
                 mb={"10px"}
               />
 
-              <FormLabel>Your Age</FormLabel>
-              <Input
-                type="text"
-                value={age}
-                placeholder="Your Age"
-                onChange={handleChange}
-                name="age"
-                mb={"10px"}
-              />
+              <Box display={"flex"} justifyContent="space-around" gap="20px" alignItems={"center"}>
+                <FormLabel>Your Age</FormLabel>
+                <Input
+                  type="text"
+                  value={age}
+                  placeholder="Your Age"
+                  onChange={handleChange}
+                  name="age"
+                  mb={"10px"}
+                />
 
-              <FormLabel>Your Gender</FormLabel>
-              <RadioGroup
-                mb={"10px"}
-                name="gender"
-                value={gender}
-                onChange={(value) => handleChange({ target: { name: 'gender', value } })}
-              >
-                <Stack spacing={5} direction="row">
-                  <Radio colorScheme="red" value="male">
-                    Male
-                  </Radio>
-                  <Radio colorScheme="green" value="female">
-                    Female
-                  </Radio>
-                </Stack>
-              </RadioGroup>
+                <FormLabel>Your Gender</FormLabel>
+                <RadioGroup
+                  mb={"10px"}
+                  name="gender"
+                  value={gender}
+                  onChange={(value) =>
+                    handleChange({ target: { name: "gender", value } })
+                  }
+                >
+                  <Stack spacing={5} direction="column">
+                    <Radio colorScheme="red" value="male">
+                      Male
+                    </Radio>
+                    <Radio colorScheme="green" value="female">
+                      Female
+                    </Radio>
+                  </Stack>
+                </RadioGroup>
+              </Box>
 
-              <FormLabel>Date of Birth</FormLabel>
+              <FormLabel>Create Password</FormLabel>
               <Input
-                type="date"
-                value={date_of_birth}
+                type="password"
+                value={password}
                 onChange={handleChange}
                 mb={"10px"}
-                name="date_of_birth"
+                name="password"
+                placeholder="New Password"
               />
 
               <Center>
@@ -188,7 +224,7 @@ function Registration() {
           </Text>
         </Box>
       </Center>
-      <Footer/>
+      <Footer />
     </Box>
   );
 }

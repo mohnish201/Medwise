@@ -59,7 +59,7 @@ function Appointment() {
   const { patientName, date, time, status } = state;
   const postData = () => {
     axios
-      .post(`https://medwise-api-oy52.onrender.com/appointments`, {
+      .post(`https://medwise.onrender.com/appointments`, {
         patientName: patientName,
         date: date,
         time: time,
@@ -71,7 +71,7 @@ function Appointment() {
 
   const getData = () => {
     axios
-      .get(`https://medwise-api-oy52.onrender.com/appointments`)
+      .get(`https://medwise.onrender.com/appointments`)
       .then((res) => {
         console.log(res.data);
         setData(res.data);
@@ -81,7 +81,7 @@ function Appointment() {
 
   const deleteData = (id) => {
     axios
-      .delete(`https://medwise-api-oy52.onrender.com/appointments/${id}`)
+      .delete(`https://medwise.onrender.com/appointments/${id}`)
       .then(() => getData())
       .catch((err) => console.log(err));
 
@@ -95,7 +95,7 @@ function Appointment() {
 
   const toggleStatus = (id) => {
     axios
-      .patch(`https://medwise-api-oy52.onrender.com/appointments/${id}`, {
+      .patch(`https://medwise.onrender.com/appointments/${id}`, {
         status: "Cancelled",
       })
       .then(() => getData())
@@ -211,7 +211,7 @@ function Appointment() {
               </Select>
 
               <Center>
-                <Button mt={4} mb={0} colorScheme="messenger" type="submit">
+                <Button mt={"6px"} mb={0} colorScheme="messenger" type="submit">
                   Book Appointment
                 </Button>
               </Center>

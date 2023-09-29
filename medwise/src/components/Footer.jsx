@@ -27,7 +27,7 @@ import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 function Footer() {
   return (
-    <Box>
+    <Box mt="50px">
       <Center>
         <Image
           src={MedwiseLogo}
@@ -105,10 +105,10 @@ function Footer() {
                <Center>
 
             <HStack spacing={"10px"} >
-                <FaFacebook size={"40px"}/>
-                <FaTwitter size={"40px"}/>
-                <FaInstagram size={"40px"}/>
-                <FaLinkedin size={"40px"}/>
+                <FaFacebook size={"30px"}/>
+                <FaTwitter size={"30px"}/>
+                <FaInstagram size={"30px"}/>
+                <FaLinkedin size={"30px"}/>
             </HStack>
                </Center>
           </GridItem>

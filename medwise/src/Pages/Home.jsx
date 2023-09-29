@@ -233,12 +233,12 @@ function Home() {
 
             <HStack>
               <RiCheckboxCircleFill color="dodgerblue" size={"30px"} />
-              <span>450+ Happy Pateints</span>
+              <span>100+ Expert Doctors</span>
             </HStack>
 
             <HStack>
               <RiCheckboxCircleFill color="dodgerblue" size={"30px"} />
-              <span>450+ Happy Pateints</span>
+              <span>300+ Hospital Rooms</span>
             </HStack>
           </VStack>
         </VStack>

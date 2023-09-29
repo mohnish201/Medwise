@@ -21,8 +21,9 @@ import {
   Heading,
   Text,
   Avatar,
+  Link,
 } from "@chakra-ui/react";
-import { Link as ReachLink, NavLink, Link } from "react-router-dom";
+import { NavLink, Link as Reachlink } from "react-router-dom";
 import ButtonComponent from "./ButtonComponent";
 import { AiFillHome, AiFillInfoCircle } from "react-icons/ai";
 import { GrServices } from "react-icons/gr";
@@ -88,17 +89,16 @@ function Navbar() {
     >
       <Box
         w={{
-          base: "120px",
-          sm: "120px",
+          base: "100px",
+          sm: "150px",
           md: "150px",
           lg: "190px",
           xl: "190px",
-          "2xl": "190px",
         }}
       >
-        <Link to="/">
+        <Reachlink to="/">
           <Image src={MedwiseLogo} alt="medwise" w={"100%"} />
-        </Link>
+        </Reachlink>
       </Box>
 
       <HStack
@@ -117,7 +117,7 @@ function Navbar() {
           <NavLink
             key={el.title}
             to={el.path}
-            as={ReachLink}
+            as={Reachlink}
             style={({ isActive }) => {
               return isActive ? active : nonActive;
             }}
@@ -140,21 +140,30 @@ function Navbar() {
           <MenuList>
             <MenuItem>My Account</MenuItem>
             <MenuItem>Payments</MenuItem>
-            <Link to="/login">
+            <Reachlink to="/login">
               <MenuItem onClick={logout}>
                 Logout <Spacer /> <FaSignOutAlt />
               </MenuItem>
-            </Link>
+            </Reachlink>
           </MenuList>
         </Menu>
       ) : (
-        <Link to="/login">
+        <Reachlink to="/login">
           <ButtonComponent text="Login" />
-        </Link>
+        </Reachlink>
       )}
 
-      <Link to="/contact">
-        <ButtonComponent text="Contact Us" />
+      <Link
+        to="/contact"
+        display={{
+          base: "none",
+          sm: "none",
+          md: "block",
+          lg: "block",
+          xl: "block",
+        }}
+      >
+        <Button size={{base: "sm", sm:"sm", md:"md", lg:"lg"}} colorScheme={"red"}>Contact Us</Button>
       </Link>
 
       <Menu>
@@ -173,29 +182,29 @@ function Navbar() {
         />
 
         <MenuList>
-          <Link to="/">
+          <Reachlink to="/">
             <MenuItem>
               Home <Spacer /> <AiFillHome />{" "}
             </MenuItem>
-          </Link>
+          </Reachlink>
 
-          <Link to="/aboutus">
+          <Reachlink to="/aboutus">
             <MenuItem>
               About Us <Spacer /> <AiFillInfoCircle />
             </MenuItem>
-          </Link>
+          </Reachlink>
 
-          <Link to="/services">
+          <Reachlink to="/services">
             <MenuItem>
               Services <Spacer /> <GrServices />
             </MenuItem>
-          </Link>
+          </Reachlink>
 
-          <Link to="/Our_Doctors">
+          <Reachlink to="/Our_Doctors">
             <MenuItem>
               Our Doctor <Spacer /> <GiDoctorFace />
             </MenuItem>
-          </Link>
+          </Reachlink>
 
           <MenuItem onClick={logout}>
             Logout <Spacer /> <FaSignOutAlt />
